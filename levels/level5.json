@@ -1,0 +1,14 @@
+{  
+  "obstacles": [
+    {
+      "spawnTime": 1.0,
+      "y": 600,
+      "vx": -400,
+      "color": [0,255,65],
+      "pattern": [
+        {"action":"SetVx","time":2.0,"value":-1000},
+        {"action":"SetVy","time":2.0,"value":-1000}
+      ]
+    }
+  ]
+}
