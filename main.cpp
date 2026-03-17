@@ -14,10 +14,12 @@
 #include "levelSys.hpp"
 #include "GameStates/playing.hpp"
 
-const float needleHeight = 20.00f;
-const float needleWidth = 100.00f;
-const int WindowWidth = 1439;
+const float needleHeight = 0.04f;
+const float needleWidth = 0.08f;
+const int WindowWidth = 1200;
 const int WindowHeight = 800;
+const float playerRadius = 0.025f;
+bool fullScreen = true;
 
 
 
@@ -27,7 +29,7 @@ std::vector<Obstacle> spawnObstacles(std::vector<spawnData>& level){
         Obstacle obstacle(needleWidth, needleHeight, level[i].color, level[i].Pattern);
         obstacle.y = level[i].y;
         obstacle.vx = level[i].vx;
-        obstacle.x =  (1200-level[i].spawnTime * obstacle.vx);
+        obstacle.x =  (WindowWidth-level[i].spawnTime * obstacle.vx);
         obstacle.Pattern = level[i].Pattern;
         result.push_back(obstacle);
     }
@@ -37,8 +39,8 @@ std::vector<Obstacle> spawnObstacles(std::vector<spawnData>& level){
 
 int main(){
 
-    sf::RenderWindow window( sf::VideoMode( WindowWidth, WindowHeight), "Save The Balloon");
-    window.setFramerateLimit(120);
+    sf::RenderWindow window( sf::VideoMode( WindowWidth, WindowHeight), "Drift");
+    window.setFramerateLimit(30);
 
     std::vector<Obstacle> obstacles;
     Balloon player;
@@ -74,7 +76,7 @@ int main(){
     pausedText.setPosition(sf::Vector2f(WindowWidth/2, WindowHeight/3));
     pausedText.setFillColor(sf::Color::White);
     
-    double leftoverTime = 0.0;    
+    double leftoverTime = 0.0;
     sf::Clock clock;
     
 
@@ -90,11 +92,24 @@ int main(){
             if ( event.type == sf::Event::Resized){
                 sf::View view(sf::FloatRect(0, 0, event.size.width, event.size.height));
                 window.setView(view);
+                home.resize();
+                menu.resize();
+                playingScreen.resize(obstacles, player);
             }
             if (event.type == sf::Event::KeyPressed){
                 switch (event.key.code){
                 case sf::Keyboard::Space:
                     if (state == GameState::Playing){player.isJump = true;}
+                    break;
+                case sf::Keyboard::F:
+                    if (fullScreen){
+                        window.create(sf::VideoMode(WindowWidth, WindowHeight), "Drift");
+                        fullScreen = false;
+                    }
+                    else{
+                        window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
+                        fullScreen = true;
+                    }
                     break;
                 default:
                     break;
@@ -142,10 +157,12 @@ int main(){
             }
             
             case GameState::LoadLevel: {
+                window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
+                fullScreen = true;
                 leftoverTime = 0;
                 levels.loadLevel(menu.requestLevelNo);
                 obstacles = spawnObstacles(levels.levels[menu.requestLevelNo-1]);
-                player.setRadius(50.00f); 
+                player.setRadius(playerRadius);
                 player.setColor(sf::Color::Red);
                 player.x = 100; 
                 player.y = 300;
@@ -153,7 +170,8 @@ int main(){
                 player.vy = 0;
                 player.ay = 500.00f;
                 state = GameState::Playing;
-                
+                playingScreen.resize(obstacles, player);
+
                 break;
             }
             

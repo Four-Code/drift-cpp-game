@@ -38,15 +38,9 @@ level6(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 6", fonts.arial, sf::Vect
 levels("Levels", fonts.arial, sf::Color::Black),
 resourcemanager(resourcemanagerpara)
 {
-    sf::Vector2u winSize = window.getSize();
-    centercontainer1.width = 0.6 * winSize.x;
-    centercontainer1.setPosition(sf::Vector2f(0, 0));
-    centercontainer2.width = 0.6 *winSize.x;
-    centercontainer2.setPosition(sf::Vector2f(0.4*winSize.x, 0));
-
-    level1.marginTop = 0.4 * winSize.y;
-    level2.marginTop = 0.55 * winSize.y;
-    level3.marginTop = 0.7 * winSize.y;
+    level1.marginTop = 0.4;
+    level2.marginTop = 0.55;
+    level3.marginTop = 0.7;
 
     centercontainer1.add(level1);
     centercontainer1.add(level2);
@@ -54,9 +48,9 @@ resourcemanager(resourcemanagerpara)
 
     LevelScreen.add(centercontainer1);
     
-    level4.marginTop = 0.4 * winSize.y;
-    level5.marginTop = 0.55 * winSize.y;
-    level6.marginTop = 0.7 * winSize.y;
+    level4.marginTop = 0.4;
+    level5.marginTop = 0.55;
+    level6.marginTop = 0.7;
 
     centercontainer2.add(level4);
     centercontainer2.add(level5);
@@ -70,15 +64,26 @@ resourcemanager(resourcemanagerpara)
     eventHandler.addButton(level4);
     eventHandler.addButton(level5);
     eventHandler.addButton(level6);
-
+    resize();
 }
 
 void LevelGameState::show(){
     window.clear();
-    float factorW = window.getSize().x / resourcemanager.homeBg.getLocalBounds().width;
-    float factorH = window.getSize().y / resourcemanager.homeBg.getLocalBounds().height;
-
-    // resourcemanager.homeBg.setScale(sf::Vector2f(factor, factor));
     window.draw(resourcemanager.homeBg);
     window.draw(LevelScreen);
+}
+
+void LevelGameState::resize(){
+    sf::Vector2u winSize = window.getSize();
+    float factorW = winSize.x / resourcemanager.homeBg.getLocalBounds().width;
+    float factorH = winSize.y / resourcemanager.homeBg.getLocalBounds().height;
+    resourcemanager.homeBg.setScale(sf::Vector2f(factorW, factorH));
+    centercontainer1.width = 0.6 * winSize.x;
+    centercontainer1.setPosition(sf::Vector2f(0, 0));
+    centercontainer2.width = 0.6 *winSize.x;
+    centercontainer2.setPosition(sf::Vector2f(0.4*winSize.x, 0));
+    centercontainer1.height = winSize.y;
+    centercontainer2.height = winSize.y;
+    centercontainer1.arrange();
+    centercontainer2.arrange();
 }

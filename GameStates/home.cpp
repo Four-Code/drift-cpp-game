@@ -25,9 +25,9 @@ resourcemanager(resourcemanagerpara)
 
 {
     centercontainer.width = window.getSize().x;
-    start.marginTop = window.getSize().y *0.6;
-
-    level.marginTop = window.getSize().y *0.75;
+    centercontainer.height = window.getSize().y;
+    start.marginTop = 0.6;
+    level.marginTop = 0.75;
 
     versionNumberText.setPosition(sf::Vector2f(100, 600));
 
@@ -42,9 +42,17 @@ resourcemanager(resourcemanagerpara)
 
 void HomeGameState::show(){
     this->window.clear();
-    float factorW = window.getSize().x / resourcemanager.homeBg.getLocalBounds().width;
-    float factorH = window.getSize().y / resourcemanager.homeBg.getLocalBounds().height;
-    resourcemanager.homeBg.setScale(sf::Vector2f(factorW, factorH));
     this->window.draw(resourcemanager.homeBg);
     this->window.draw(homeScreen);
+}
+
+void HomeGameState::resize(){
+    sf::Vector2u winSize = window.getSize();
+    float factorW = winSize.x / resourcemanager.homeBg.getLocalBounds().width;
+    float factorH = winSize.y / resourcemanager.homeBg.getLocalBounds().height;
+    resourcemanager.homeBg.setScale(sf::Vector2f(factorW, factorH));
+
+    centercontainer.width = winSize.x;
+    centercontainer.height = winSize.y;
+    centercontainer.arrange();
 }

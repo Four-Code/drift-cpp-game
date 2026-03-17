@@ -18,4 +18,5 @@ class PlayingGameState{
     bool alive = true;
     PlayingGameState(sf::RenderWindow& windowPara, GameFont& fontsPara, ResourceManager& resourcemanagerpara);
     void show(float dt, double& leftoverTime, std::vector<Obstacle>& obstacles, Balloon& player );
+    void resize(std::vector<Obstacle>& obstacles, Balloon& player);
 };

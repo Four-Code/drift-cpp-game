@@ -43,5 +43,6 @@ class LevelGameState{
     LevelGameState(sf::RenderWindow& window, GameFont& gamefontpara, ResourceManager& resourcemanagerpara);
 
     void show();
+    void resize();
 
 };

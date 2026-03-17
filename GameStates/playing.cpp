@@ -20,29 +20,38 @@ float sqr(float x){
 bool checkCollision(const Balloon& balloon, const Obstacle& needle){
     float closestX = 0.00f;
     float closestY = 0.00f;
-    if (balloon.x<=needle.x){
-        closestX = needle.x;
+    sf::FloatRect needleData = needle.shape.getGlobalBounds();
+    sf::FloatRect balloonData = balloon.shape.getGlobalBounds();
+
+    float needlex = needleData.getPosition().x;
+    float needley = needleData.getPosition().y;
+    float balloonx = balloonData.getPosition().x+balloon.shape.getRadius();
+    float balloony = balloonData.getPosition().y+balloon.shape.getRadius();
+    float needlewidth = needleData.width;
+    float needleheight = needleData.height;
+    if (balloonx<=needlex){
+        closestX = needlex;
     }
-    else if (balloon.x >= needle.x+needle.width){
-        closestX = needle.x + needle.width;
+    else if (balloonx >= needlex+needlewidth){
+        closestX = needlex + needlewidth;
     }
     else{
-        closestX = balloon.x;
+        closestX = balloonx;
     }
 
-    if (balloon.y <= needle.y){
-        closestY = needle.y;
+    if (balloony <= needley){
+        closestY = needley;
     }
-    else if (balloon.y >= needle.y + needle.height){
-        closestY = needle.y + needle.height;
+    else if (balloony >= needley + needleheight){
+        closestY = needley + needleheight;
     }
     else{
-        closestY = balloon.y;
+        closestY = balloony;
     }
 
-    float dsqr = sqr(closestX - balloon.x) + sqr(closestY - balloon.y);
+    float dsqr = sqr(closestX - balloonx) + sqr(closestY - balloony);
 
-    if (dsqr<=sqr(balloon.radius)){
+    if (dsqr<=sqr(balloon.shape.getRadius())){
         return true;
     }
     else{
@@ -84,10 +93,21 @@ void PlayingGameState::show(float dt, double& leftoverTime, std::vector<Obstacle
     }
     
     window.draw(resourcemanager.playingBg);
-    // window.clear(sf::Color(71, 71, 71));
     window.draw(player.shape);
             
     for (int i = 0; i < obstacles.size(); i++){
         window.draw(obstacles[i].shape);
     }
+}
+
+void PlayingGameState::resize(std::vector<Obstacle>& obstacles, Balloon& player){
+    sf::Vector2u winSize = window.getSize();
+    float factorW = winSize.x / resourcemanager.playingBg.getLocalBounds().width;
+    float factorH = winSize.y / resourcemanager.playingBg.getLocalBounds().height;
+    resourcemanager.playingBg.setScale(sf::Vector2f(factorW, factorH));
+
+    for (int i = 0; i < obstacles.size(); i++){
+        obstacles[i].shape.setSize(sf::Vector2f(obstacles[i].width * winSize.x, obstacles[i].height*winSize.y));
+    }
+    player.shape.setRadius(player.radius*winSize.x);
 }

@@ -31,6 +31,6 @@ class HomeGameState{
     
     
     HomeGameState(sf::RenderWindow& windowPara, GameFont& fontsPara, ResourceManager& resourcemanagerpara);
-    
+    void resize();
     void show();
 };
