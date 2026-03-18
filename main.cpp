@@ -19,7 +19,7 @@ const float needleWidth = 0.08f;
 const int WindowWidth = 1200;
 const int WindowHeight = 800;
 const float playerRadius = 0.025f;
-bool fullScreen = true;
+bool fullScreen = false;
 
 
 
@@ -39,8 +39,11 @@ std::vector<Obstacle> spawnObstacles(std::vector<spawnData>& level){
 
 int main(){
 
-    sf::RenderWindow window( sf::VideoMode( WindowWidth, WindowHeight), "Drift");
-    window.setFramerateLimit(30);
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+
+    sf::RenderWindow window( sf::VideoMode( WindowWidth, WindowHeight), "Drift", sf::Style::Default, settings);
+    window.setFramerateLimit(60);
 
     std::vector<Obstacle> obstacles;
     Balloon player;
@@ -103,11 +106,11 @@ int main(){
                     break;
                 case sf::Keyboard::F:
                     if (fullScreen){
-                        window.create(sf::VideoMode(WindowWidth, WindowHeight), "Drift");
+                        window.create(sf::VideoMode(WindowWidth, WindowHeight), "Drift", sf::Style::Default, settings);
                         fullScreen = false;
                     }
                     else{
-                        window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
+                        window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen, settings);
                         fullScreen = true;
                     }
                     break;
@@ -157,7 +160,7 @@ int main(){
             }
             
             case GameState::LoadLevel: {
-                window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
+                window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen, settings);
                 fullScreen = true;
                 leftoverTime = 0;
                 levels.loadLevel(menu.requestLevelNo);
@@ -184,6 +187,8 @@ int main(){
             }
 
             case GameState::Paused:{
+                leftoverTime = 0;
+                playingScreen.show(0, leftoverTime, obstacles, player);
                 window.draw(pausedText);
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){ state = GameState::Playing;}
                 break;

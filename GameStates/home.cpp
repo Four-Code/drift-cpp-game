@@ -29,13 +29,13 @@ resourcemanager(resourcemanagerpara)
     start.marginTop = 0.6;
     level.marginTop = 0.75;
 
-    versionNumberText.setPosition(sf::Vector2f(100, 600));
+    // versionNumberText.setPosition(sf::Vector2f(100, 600));
 
     centercontainer.add(start);
     centercontainer.add(level);
 
     homeScreen.add(centercontainer);
-    homeScreen.add(versionNumberText);
+    // homeScreen.add(versionNumberText);
     eventHandler.addButton(start);
     eventHandler.addButton(level);
 }

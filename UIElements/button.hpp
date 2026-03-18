@@ -13,6 +13,16 @@ class GUIButton: public UIElement{
     sf::Vector2f pos;
     std::function<void()> onClick;
     ResourceManager resourcemanager;
+    sf::Color btnColor;
+    sf::CircleShape rightCircle;
+    sf::CircleShape leftCircle;
+    float width; float height;
+
+    sf::Color shadowColor;
+    sf::RectangleShape shapeShadow;
+    sf::CircleShape rightCircleShadow;
+    sf::CircleShape leftCircleShadow;
+    float shadowOffset;
 
 
     GUIButton(sf::Color color, float width, float height, const std::string& textPara, sf::Font& fontPara, sf::Vector2f posPara, ResourceManager& resourcemanagerpara, std::function<void()>action);
