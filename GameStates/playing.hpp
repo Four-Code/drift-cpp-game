@@ -8,6 +8,10 @@
 #include "../balloon.hpp"
 #include "../obstacle.hpp"
 
+const float PHYSICS_TIME_STEP = 0.0166667;
+
+void update(PhysicsObject& obj);
+
 class PlayingGameState{
     public:
     std::optional<GameState> requestState;

@@ -18,7 +18,7 @@ class HomeGameState{
     sf::RenderWindow& window;
     GameFont& fonts;
     UIText versionNumberText;
-    ResourceManager resourcemanager;
+    ResourceManager& resourcemanager;
     UIContainer homeScreen;
     GUIButton start;
     GUIButton level;

@@ -2,8 +2,8 @@
 #include "../physicsObject.hpp"
 #include "../balloon.hpp"
 #include "../obstacle.hpp"
+#include <iostream>
 
-const float PHYSICS_TIME_STEP = 0.0166667;
 
 void update(PhysicsObject& obj){
     if (obj.x<1200){
@@ -70,9 +70,10 @@ resourcemanager(resourcemanagerpara)
 }
 
 void PlayingGameState::show(float dt, double& leftoverTime, std::vector<Obstacle>& obstacles, Balloon& player ){
-    float factor = window.getSize().x / resourcemanager.homeBg.getLocalBounds().width;
-    resourcemanager.homeBg.setScale(sf::Vector2f(factor, factor));
     window.draw(resourcemanager.playingBg);
+    for (int i = 0; i < obstacles.size(); i++){
+        obstacles[i].shape.setPosition(obstacles[i].x, obstacles[i].y);
+    }
     
     leftoverTime += dt;
     while (leftoverTime>=PHYSICS_TIME_STEP){           
@@ -86,11 +87,11 @@ void PlayingGameState::show(float dt, double& leftoverTime, std::vector<Obstacle
         }
         leftoverTime -= PHYSICS_TIME_STEP;
     }
+
+    std::cout<<dt<<std::endl;
     
     player.shape.setPosition(player.x-player.radius, player.y-player.radius);
-    for (int i = 0; i < obstacles.size(); i++){
-        obstacles[i].shape.setPosition(obstacles[i].x, obstacles[i].y);
-    }
+
     
     window.draw(resourcemanager.playingBg);
     window.draw(player.shape);

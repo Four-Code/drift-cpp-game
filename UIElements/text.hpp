@@ -9,6 +9,5 @@ class UIText: public UIElement{
     sf::Vector2f getSize() override;
 
     void setText(const std::string& str);
-    private:
-    void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
+    void draw(sf::RenderTarget& target) override;
 };

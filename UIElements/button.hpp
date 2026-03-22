@@ -10,7 +10,6 @@ class GUIButton: public UIElement{
     sf::RectangleShape shape;
     sf::Font& font;
     sf::Text shapeText;
-    sf::Vector2f pos;
     std::function<void()> onClick;
     ResourceManager resourcemanager;
     sf::Color btnColor;
@@ -27,13 +26,9 @@ class GUIButton: public UIElement{
 
     GUIButton(sf::Color color, float width, float height, const std::string& textPara, sf::Font& fontPara, sf::Vector2f posPara, ResourceManager& resourcemanagerpara, std::function<void()>action);
 
-    void click(){
-        if(onClick){
-            onClick();
-        }
-    }
+    void click();
 
     sf::Vector2f getSize() override;
-    private:
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+    void arrangeDrawableObjects();
+    void draw(sf::RenderTarget& target) override;
 };

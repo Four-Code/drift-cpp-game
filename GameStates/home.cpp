@@ -15,10 +15,10 @@ HomeGameState::HomeGameState(sf::RenderWindow& windowPara, GameFont& fontsPara, 
 window(windowPara), 
 fonts(fontsPara), 
 versionNumberText("1.0.0", fontsPara.arial, sf::Color::Black), 
-start(sf::Color(255, 0, 0), resourcemanager.buttonSprite.getLocalBounds().width*buttonFactor, resourcemanager.buttonSprite.getLocalBounds().height*buttonFactor, "Start", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+start(sf::Color(237, 229, 138), resourcemanager.buttonSprite.getLocalBounds().width*buttonFactor, resourcemanager.buttonSprite.getLocalBounds().height*buttonFactor, "Start", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
 }),
-level(sf::Color::Black, resourcemanager.buttonSprite.getLocalBounds().width*buttonFactor, resourcemanager.buttonSprite.getLocalBounds().height*buttonFactor, "Levels", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level(sf::Color(237, 229, 138), resourcemanager.buttonSprite.getLocalBounds().width*buttonFactor, resourcemanager.buttonSprite.getLocalBounds().height*buttonFactor, "Levels", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::Menu;
 }),
 resourcemanager(resourcemanagerpara)
@@ -43,7 +43,7 @@ resourcemanager(resourcemanagerpara)
 void HomeGameState::show(){
     this->window.clear();
     this->window.draw(resourcemanager.homeBg);
-    this->window.draw(homeScreen);
+    homeScreen.draw(this->window);
 }
 
 void HomeGameState::resize(){

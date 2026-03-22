@@ -11,27 +11,27 @@ window(windowPara),
 fonts(gamefontpara),
 btnWidth(resourcemanager.buttonSprite.getLocalBounds().width*buttonFactor),
 btnHeight(resourcemanager.buttonSprite.getLocalBounds().height*buttonFactor),
-level1(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 1", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level1(sf::Color(237, 229, 138), btnWidth, btnHeight, "Level 1", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
     requestLevelNo = 1;
 }),
-level2(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 2", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level2(sf::Color(237, 229, 138), btnWidth, btnHeight, "Level 2", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
     requestLevelNo = 1;
 }),
-level3(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 3", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level3(sf::Color(237, 229, 138), btnWidth, btnHeight, "Level 3", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
     requestLevelNo = 3;
 }),
-level4(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 4", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level4(sf::Color(237, 229, 138), btnWidth, btnHeight, "Level 4", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
     requestLevelNo = 4;
 }),
-level5(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 5", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level5(sf::Color(237, 229, 138), btnWidth, btnHeight, "Level 5", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
     requestLevelNo = 5;
 }),
-level6(sf::Color(0, 0, 0), btnWidth, btnHeight, "Level 6", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
+level6(sf::Color(237, 229, 138), btnWidth, btnHeight, "Level 6", fonts.arial, sf::Vector2f(0, 0), resourcemanager,[&]{
     requestState = GameState::LoadLevel;
     requestLevelNo = 6;
 }),
@@ -70,7 +70,7 @@ resourcemanager(resourcemanagerpara)
 void LevelGameState::show(){
     window.clear();
     window.draw(resourcemanager.homeBg);
-    window.draw(LevelScreen);
+    LevelScreen.draw(window);
 }
 
 void LevelGameState::resize(){

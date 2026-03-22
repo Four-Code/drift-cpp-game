@@ -9,9 +9,10 @@ class UIContainer: public UIElement{
     float height;
     float width;
 
-    void add(UIElement& element);
+    float autoPosition = false;
 
-    private:
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+    void add(UIElement& element);
+    void draw(sf::RenderTarget& target) override;
+    void arrange();
     sf::Vector2f getSize()override;
 }; 

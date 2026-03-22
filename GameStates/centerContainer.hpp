@@ -11,7 +11,6 @@ class CenterContainer: public UIElement{
     float width = 0;
     void add(UIElement& element);
     void arrange();
-    private:
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+    void draw(sf::RenderTarget& target)override;
     sf::Vector2f getSize() override;
 };

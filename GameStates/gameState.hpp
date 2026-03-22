@@ -1,3 +1,3 @@
 #pragma once
 
-enum class GameState{Home, Menu, LoadLevel, Playing, Paused, GameOver};
+enum class GameState{Home, Menu, LoadLevel, Playing, Paused, GameOver, LevelEditor};

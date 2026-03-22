@@ -13,6 +13,7 @@
 #include "GameStates/levels.hpp"
 #include "levelSys.hpp"
 #include "GameStates/playing.hpp"
+#include "GameStates/leveleditor.hpp"
 
 const float needleHeight = 0.04f;
 const float needleWidth = 0.08f;
@@ -78,6 +79,9 @@ int main(){
     pausedText.setOrigin(sf::Vector2f(pausedTextSize.x/2, pausedTextSize.y /2));
     pausedText.setPosition(sf::Vector2f(WindowWidth/2, WindowHeight/3));
     pausedText.setFillColor(sf::Color::White);
+
+    //level editor
+    LevelEditorGameState leveleditor(window, fonts, resourcemanager);
     
     double leftoverTime = 0.0;
     sf::Clock clock;
@@ -98,6 +102,7 @@ int main(){
                 home.resize();
                 menu.resize();
                 playingScreen.resize(obstacles, player);
+                leveleditor.resize();
             }
             if (event.type == sf::Event::KeyPressed){
                 switch (event.key.code){
@@ -110,9 +115,13 @@ int main(){
                         fullScreen = false;
                     }
                     else{
-                        window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen, settings);
+                        window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
                         fullScreen = true;
                     }
+                    break;
+                case sf::Keyboard::F12:
+                    leveleditor.resize();
+                    state = GameState::LevelEditor;
                     break;
                 default:
                     break;
@@ -122,6 +131,7 @@ int main(){
                 if (event.mouseButton.button == sf::Mouse::Left){
                     home.eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
                     menu.eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
+                    leveleditor.eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
                 }
                 
             }
@@ -131,7 +141,7 @@ int main(){
         }
         
         float dt = clock.restart().asSeconds();
-        if (dt > 0.01){ dt = 0.008; leftoverTime=0;}
+        if (dt > 0.02){ dt = 0.02;}
 
         switch (state){
             case GameState::Home: {
@@ -160,7 +170,7 @@ int main(){
             }
             
             case GameState::LoadLevel: {
-                window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen, settings);
+                window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
                 fullScreen = true;
                 leftoverTime = 0;
                 levels.loadLevel(menu.requestLevelNo);
@@ -199,6 +209,10 @@ int main(){
                 window.draw(gameOver);
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){ state = GameState::Home; break;}
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){state = GameState::LoadLevel;}
+                break;
+            }
+            case GameState::LevelEditor:{
+                leveleditor.show(dt, leftoverTime);
                 break;
             }
         }

@@ -11,9 +11,8 @@ sf::Vector2f UIText::getSize(){
     return sf::Vector2f(shapeText.getGlobalBounds().width, shapeText.getGlobalBounds().height);
 }
 
-void UIText::draw(sf::RenderTarget& target, sf::RenderStates states)const{
-    states.transform *= getTransform();
-    target.draw(shapeText, states);
+void UIText::draw(sf::RenderTarget& target){
+    target.draw(shapeText);
 }
 
 void UIText::setText(const std::string& str){

@@ -3,15 +3,15 @@
 #include "../UIElements/UIElement.hpp"
 
 void CenterContainer::add(UIElement& element){
-    elements.push_back(&element);
     element.setParent(*this);
+    elements.push_back(&element);
     arrange();
 }
 
-void CenterContainer::draw(sf::RenderTarget& target, sf::RenderStates states)const{
-    states.transform *= getTransform();
+void CenterContainer::draw(sf::RenderTarget& target){
+    arrange();
     for (UIElement* element: elements){
-        target.draw(*element, states);
+        (*element).draw(target);
     }
 }
 
@@ -21,11 +21,8 @@ sf::Vector2f CenterContainer::getSize(){
 
 void CenterContainer::arrange(){
     for (int i = 0; i < elements.size(); i++){
-        (*elements[i]).setPosition(sf::Vector2f((width-(*elements[i]).getSize().x)/2, 0));
-
-        sf::Vector2f initPos = (*elements[i]).getPosition();
-
-        (*elements[i]).setPosition(sf::Vector2f(initPos.x, initPos.y + height* ((*elements[i]).marginTop)));
+        sf::Vector2f selfPos = getPosition();
+        (*elements[i]).setPosition(sf::Vector2f(selfPos.x+ (width-(*elements[i]).getSize().x)/2, selfPos.y + height* ((*elements[i]).marginTop)));
     
     }
     
