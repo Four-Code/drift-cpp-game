@@ -14,7 +14,9 @@ btnColor(color),
 width(width),
 height(height),
 shadowOffset(0.05*width),
-shadowColor(84, 123, 131)
+shadowColor(84, 123, 131),
+isHover(false),
+hoverColor(btnColor.r*0.9, btnColor.g*0.9, btnColor.b*0.9)
 {
     setPosition(posPara);
     
@@ -40,11 +42,17 @@ shadowColor(84, 123, 131)
     shapeText.setFillColor(sf::Color::Black);
 }
 
+void GUIButton::setTextSize(float size){
+    shapeText.setCharacterSize(size*width/100);
+}
+
 void GUIButton::draw(sf::RenderTarget& target){
     arrangeDrawableObjects();
-    target.draw(shapeShadow);
-    target.draw(rightCircleShadow);
-    target.draw(leftCircleShadow);
+    if (!isHover){
+        target.draw(shapeShadow);
+        target.draw(rightCircleShadow);
+        target.draw(leftCircleShadow);
+    }
     target.draw(shape);
     target.draw(rightCircle);
     target.draw(leftCircle);
@@ -72,3 +80,20 @@ void GUIButton::arrangeDrawableObjects(){
     sf::FloatRect textBounds = shapeText.getLocalBounds();
     shapeText.setPosition(sf::Vector2f(pos.x+ (width-textBounds.width)/2+ 0.02*width - textBounds.left, (pos.y+(height-textBounds.height)/2) - textBounds.top ));
 };
+
+void GUIButton::hover(){
+    if (!isHover){ 
+        isHover = true;
+        shape.setFillColor(hoverColor);
+        rightCircle.setFillColor(hoverColor);
+        leftCircle.setFillColor(hoverColor);
+    }
+}
+void GUIButton::unhover(){
+    if (isHover){
+        isHover = false;
+        shape.setFillColor(btnColor);
+        rightCircle.setFillColor(btnColor);
+        leftCircle.setFillColor(btnColor);
+    }
+}

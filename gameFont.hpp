@@ -4,4 +4,6 @@
 
 struct GameFont{
     sf::Font arial;
+    sf::Font dracula;
+    sf::Font coolItalic;
 };

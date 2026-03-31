@@ -3,6 +3,9 @@
 #include "obstacle.hpp"
 #include <SFML/Graphics.hpp>
 
+enum GameState{Home, Menu, LoadLevel, Playing, Paused, GameOver, LevelEditor};
+
+
 struct spawnData{
     float spawnTime;
     float y;

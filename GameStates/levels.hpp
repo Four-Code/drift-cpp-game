@@ -1,7 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <optional>
-#include "gameState.hpp"
 #include "../gameFont.hpp"
 #include "../UIElements/button.hpp"
 #include "../resourceManager.hpp"
@@ -9,14 +7,11 @@
 #include "UIContainer.hpp"
 #include "centerContainer.hpp"
 #include "../eventHandler.hpp"
+#include "../levelSys.hpp"
+#include "gameStateBase.hpp"
 
-class LevelGameState{
+class LevelGameState: public GameStateBase{
     public:
-    std::optional<GameState> requestState;
-    sf::RenderWindow& window;
-    GameFont& fonts;
-
-    ResourceManager resourcemanager;
 
     float buttonFactor;
     float btnWidth;
@@ -31,18 +26,19 @@ class LevelGameState{
 
     UIText levels;
 
-    UIContainer LevelScreen;
     CenterContainer centercontainer1;
-    CenterContainer centercontainer2;
+    CenterContainer centercontainer2;   
+    CenterContainer levelcentercontainer;   
 
-    EventHandler eventHandler;    
 
     int requestLevelNo;
+    float transitionSpeed;
 
 
-    LevelGameState(sf::RenderWindow& window, GameFont& gamefontpara, ResourceManager& resourcemanagerpara);
+    LevelGameState(sf::RenderWindow& window, GameFont& gamefontpara, ResourceManager& resourcemanagerpara, GameState state);
 
-    void show();
-    void resize();
+    void show() override;
+    void resize() override;
+    void updateTransition(float dt) override;
 
 };

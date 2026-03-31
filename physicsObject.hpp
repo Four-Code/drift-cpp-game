@@ -3,6 +3,8 @@
 //Generic Physics Object
 class PhysicsObject{
     public:
+        float xprev=0;
+        float yprev=0;
         float x = 100.00f;
         float y = 100.00f;
         float vx = 0;

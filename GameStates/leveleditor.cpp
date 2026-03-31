@@ -1,18 +1,38 @@
 #include "leveleditor.hpp"
 #include <iostream>
 #include "playing.hpp"
+#include <cmath>
 
-LevelEditorGameState::LevelEditorGameState(sf::RenderWindow& windowPara, GameFont& fontsPara, ResourceManager& resourcemanagerpara)
-:window(windowPara),
-fonts(fontsPara),
-resourcemanager(resourcemanagerpara),
+std::string format(double x){
+    std::string s = std::to_string(std::trunc(x*100)/100);
+    while (!s.empty() && s.back()=='0'){
+        s.pop_back();
+    }
+    return s;
+}
+
+
+
+EditableObstacle::EditableObstacle(float width, float height, sf::Color color, std::function<void()> onClick)
+:Obstacle(width, height, std::vector<PatternStep>{}),
+shape(width, height, color, onClick)
+{
+
+}
+void EditableObstacle::show(sf::RenderWindow& window){
+    shape.draw(window);
+}
+
+LevelEditorGameState::LevelEditorGameState(sf::RenderWindow& windowPara, GameFont& fontsPara, ResourceManager& resourcemanagerpara, GameState state)
+:GameStateBase(windowPara, fontsPara, resourcemanagerpara, state),
 addObstacle(sf::Color(237, 229, 138), 80, 50, "+", fonts.arial, sf::Vector2f(0, 0), resourcemanager, [&]{
-    Obstacle obstacle(0.08*window.getSize().x, 0.05*window.getSize().y, sf::Color::Blue, std::vector<PatternStep>{});
+    EditableObstacle obstacle(0.08*window.getSize().x, 0.05*window.getSize().y, sf::Color::Blue, [&]{
+        std::cout << "pressed obstacle"<<std::endl;
+    });
     obstacle.vx = -200;
     obstacle.x = 1200;
     obstacle.y = 100;
     obstacles.push_back(obstacle);
-    std::cout<<obstacles.size()<<std::endl;
 }),
 play(sf::Color(255, 255, 255), 80, 50, "P", fonts.arial, sf::Vector2f(0, 0), resourcemanager, [&]{
     isPlaying = true;
@@ -21,8 +41,10 @@ pause(sf::Color(255, 255, 255), 80, 50, "||", fonts.arial, sf::Vector2f(0, 0), r
     isPlaying = false;
 }),
 revind(sf::Color(255, 255, 255), 80, 50, "<<", fonts.arial, sf::Vector2f(0, 0), resourcemanager, [&]{
-    
-})
+    obstacles[0].vx *= -1;
+    direction = -1;
+}),
+editorTimeDisplay(std::to_string(editorTime), fonts.arial, sf::Color::Black)
 {
     resourcemanager.loadplayingBg();
 
@@ -32,14 +54,11 @@ revind(sf::Color(255, 255, 255), 80, 50, "<<", fonts.arial, sf::Vector2f(0, 0), 
     controls.add(addObstacle);
     controls.autoPosition = true;
 
-    // cContainer.add(pause);
-    // cContainer.add(play);
-    // cContainer.add(addObstacle);
-
     cContainer.add(controls);
 
-    // levelEditorScreen.add(addObstacle);
-    levelEditorScreen.add(cContainer);
+    mainScreen.add(editorTimeDisplay);
+    mainScreen.add(cContainer);
+    
 
     eventHandler.addButton(addObstacle);
     eventHandler.addButton(play);
@@ -48,9 +67,11 @@ revind(sf::Color(255, 255, 255), 80, 50, "<<", fonts.arial, sf::Vector2f(0, 0), 
 }
 void LevelEditorGameState::show(float dt, double& leftovertime){
     window.draw(resourcemanager.playingBg);
-    levelEditorScreen.draw(window);
-
+    mainScreen.draw(window);
+    editorTimeDisplay.setText("Time: " +format(editorTime));
+    
     if (isPlaying){
+        editorTime = editorTime + direction* dt;
         leftovertime += dt;
         while (leftovertime >= PHYSICS_TIME_STEP){
             for (int i = 0; i < obstacles.size(); i++){
@@ -62,8 +83,8 @@ void LevelEditorGameState::show(float dt, double& leftovertime){
     }
     
     for (int i = 0; i < obstacles.size(); i++){
-        obstacles[i].shape.setPosition(obstacles[i].x, obstacles[i].y);
-        window.draw(obstacles[i].shape);
+        obstacles[i].shape.setPosition(sf::Vector2f(obstacles[i].x, obstacles[i].y));
+        obstacles[i].shape.draw(window);
     }
     
 }
@@ -85,4 +106,6 @@ void LevelEditorGameState::resize(){
     cContainer.height = winSize.y;
     cContainer.setPosition(sf::Vector2f(0, 0));
     cContainer.arrange();
+
+    editorTimeDisplay.setPosition(sf::Vector2f(100, 50));
 }

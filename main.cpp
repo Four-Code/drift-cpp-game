@@ -8,87 +8,48 @@
 #include "GameStates/home.hpp"
 #include "balloon.hpp"
 #include "UIElements/button.hpp"
-#include "GameStates/gameState.hpp"
+#include "gameState.hpp"
 #include "resourceManager.hpp"
 #include "GameStates/levels.hpp"
 #include "levelSys.hpp"
 #include "GameStates/playing.hpp"
 #include "GameStates/leveleditor.hpp"
+#include "needle.hpp"
 
-const float needleHeight = 0.04f;
-const float needleWidth = 0.08f;
 const int WindowWidth = 1200;
 const int WindowHeight = 800;
-const float playerRadius = 0.025f;
-bool fullScreen = false;
-
-
-
-std::vector<Obstacle> spawnObstacles(std::vector<spawnData>& level){
-    std::vector<Obstacle> result;
-    for (int i = 0; i < level.size(); i++){
-        Obstacle obstacle(needleWidth, needleHeight, level[i].color, level[i].Pattern);
-        obstacle.y = level[i].y;
-        obstacle.vx = level[i].vx;
-        obstacle.x =  (WindowWidth-level[i].spawnTime * obstacle.vx);
-        obstacle.Pattern = level[i].Pattern;
-        result.push_back(obstacle);
-    }
-    return result;
-    
-}
 
 int main(){
 
     sf::ContextSettings settings;
-    settings.antialiasingLevel = 8;
+    settings.antialiasingLevel = 6;
 
-    sf::RenderWindow window( sf::VideoMode( WindowWidth, WindowHeight), "Drift", sf::Style::Default, settings);
+    sf::RenderWindow window( sf::VideoMode( WindowWidth, WindowHeight), "Drift", sf::Style::Close, settings);
     window.setFramerateLimit(60);
+    window.setPosition(sf::Vector2i(350, 100));
+    // window.setVerticalSyncEnabled(true);
 
-    std::vector<Obstacle> obstacles;
-    Balloon player;
 
     GameFont fonts;
     fonts.arial.loadFromFile("fonts/ARIBLK.TTF");
+    fonts.dracula.loadFromFile("fonts/IrishGrover.ttf");
+    fonts.coolItalic.loadFromFile("fonts/IosevkaCharonMono-BoldItalic.ttf");
+
 
     ResourceManager resourcemanager;
 
     resourcemanager.loadHomeBg();
-    resourcemanager.loadButtonSprite();
-    //home screen
-    HomeGameState home(window, fonts, resourcemanager);
-
-    Levels levels;
-    levels.levels.resize(10);
-    //menu
-    LevelGameState menu(window, fonts, resourcemanager);
-
     resourcemanager.loadplayingBg();
-    //playing screen
-    PlayingGameState playingScreen(window, fonts, resourcemanager);
+    resourcemanager.loadhomeBalloon();
+    resourcemanager.loadhomeCloud();
+    resourcemanager.loadHomeNeedle();
+    resourcemanager.loadNeedle();
 
-    //Game Over Screen
-    sf::Text gameOver("Game Over", fonts.arial, 100);
-    gameOver.setPosition(sf::Vector2f(300.00f, 300.00f));
-    gameOver.setFillColor(sf::Color::White);
-
-    //Pause Screen
-    sf::Text pausedText("Paused", fonts.arial, 80);
-    sf::Vector2f pausedTextSize = pausedText.getLocalBounds().getSize();
-    pausedText.setOrigin(sf::Vector2f(pausedTextSize.x/2, pausedTextSize.y /2));
-    pausedText.setPosition(sf::Vector2f(WindowWidth/2, WindowHeight/3));
-    pausedText.setFillColor(sf::Color::White);
-
-    //level editor
-    LevelEditorGameState leveleditor(window, fonts, resourcemanager);
-    
+    Game game(window, fonts, resourcemanager);
+        
     double leftoverTime = 0.0;
     sf::Clock clock;
-    
-
-    GameState state = GameState::Home;
-    
+        
 
     while (window.isOpen()){
         sf::Event event;
@@ -99,29 +60,30 @@ int main(){
             if ( event.type == sf::Event::Resized){
                 sf::View view(sf::FloatRect(0, 0, event.size.width, event.size.height));
                 window.setView(view);
-                home.resize();
-                menu.resize();
-                playingScreen.resize(obstacles, player);
-                leveleditor.resize();
+                game.states[game.currentState]->resize();
+            }
+            if(event.type == sf::Event::MouseMoved){
+                game.states[game.currentState]->eventHandler.handleHover(event.mouseMove.x, event.mouseMove.y);
             }
             if (event.type == sf::Event::KeyPressed){
                 switch (event.key.code){
                 case sf::Keyboard::Space:
-                    if (state == GameState::Playing){player.isJump = true;}
+                    if (game.currentState == GameState::Playing){game.player.isJump = true;}
                     break;
                 case sf::Keyboard::F:
-                    if (fullScreen){
+                    if (game.fullScreen){
                         window.create(sf::VideoMode(WindowWidth, WindowHeight), "Drift", sf::Style::Default, settings);
-                        fullScreen = false;
+                        game.fullScreen = false;
                     }
                     else{
                         window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
-                        fullScreen = true;
+                        game.fullScreen = true;
                     }
+                    window.setFramerateLimit(60);
                     break;
                 case sf::Keyboard::F12:
-                    leveleditor.resize();
-                    state = GameState::LevelEditor;
+                    game.leveleditor.resize();
+                    game.switchState(GameState::LevelEditor);
                     break;
                 default:
                     break;
@@ -129,93 +91,19 @@ int main(){
             }
             if (event.type == sf::Event::MouseButtonPressed){
                 if (event.mouseButton.button == sf::Mouse::Left){
-                    home.eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
-                    menu.eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
-                    leveleditor.eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
+                    game.states[game.currentState]->eventHandler.handleClick(event.mouseButton.x, event.mouseButton.y);
                 }
                 
             }
         
-        player.isShift = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
-        player.isCtrl = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl);
+        game.player.isShift = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
+        game.player.isCtrl = sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl);
         }
         
         float dt = clock.restart().asSeconds();
         if (dt > 0.02){ dt = 0.02;}
 
-        switch (state){
-            case GameState::Home: {
-                home.show();
-                if (home.requestState.has_value()){ 
-                    if (home.requestState.value() == GameState::Menu){
-                        state = GameState::Menu;
-                    }
-                    if (home.requestState.value() == GameState::LoadLevel){
-                        menu.requestLevelNo = 1;
-                        state = GameState::LoadLevel;
-                    }
-                    home.requestState.reset();
-                }
-                break;
-            }
-
-            case GameState::Menu:{
-                menu.show();
-                if (menu.requestState.has_value()){
-                    state = GameState::LoadLevel;
-                    menu.requestState.reset();
-                }
-                
-                break;
-            }
-            
-            case GameState::LoadLevel: {
-                window.create(sf::VideoMode::getDesktopMode(), "Drift", sf::Style::Fullscreen);
-                fullScreen = true;
-                leftoverTime = 0;
-                levels.loadLevel(menu.requestLevelNo);
-                obstacles = spawnObstacles(levels.levels[menu.requestLevelNo-1]);
-                player.setRadius(playerRadius);
-                player.setColor(sf::Color::Red);
-                player.x = 100; 
-                player.y = 300;
-                player.vx = 0;
-                player.vy = 0;
-                player.ay = 500.00f;
-                state = GameState::Playing;
-                playingScreen.resize(obstacles, player);
-
-                break;
-            }
-            
-            case GameState::Playing: {
-                playingScreen.show(dt, leftoverTime, obstacles, player);
-                if (!playingScreen.alive){state = GameState::GameOver; playingScreen.alive=true;}
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){state = GameState::Paused;}
-            
-                break;
-            }
-
-            case GameState::Paused:{
-                leftoverTime = 0;
-                playingScreen.show(0, leftoverTime, obstacles, player);
-                window.draw(pausedText);
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){ state = GameState::Playing;}
-                break;
-            }
-
-            case GameState::GameOver:{
-                window.clear(sf::Color(71, 71, 71));
-                window.draw(gameOver);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){ state = GameState::Home; break;}
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){state = GameState::LoadLevel;}
-                break;
-            }
-            case GameState::LevelEditor:{
-                leveleditor.show(dt, leftoverTime);
-                break;
-            }
-        }
+        game.run(dt, leftoverTime);
 
     
         window.display();

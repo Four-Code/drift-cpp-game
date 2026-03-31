@@ -3,13 +3,10 @@
 #include <SFML/Graphics.hpp>
 
 
-Obstacle:: Obstacle(float width, float height, sf::Color color, std::vector<PatternStep> Pattern){
+Obstacle:: Obstacle(float width, float height, std::vector<PatternStep> Pattern){
         this->width = width;
         this->height = height;
-        this->color = color;
-        shape.setSize(sf::Vector2f(this->width, this->height));
-        shape.setFillColor(color);
-    }
+}
 void Obstacle::executePattern(){
     for (PatternStep patternstep: Pattern){
         if( timeSinceSpawn >= patternstep.triggerTime){

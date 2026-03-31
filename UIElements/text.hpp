@@ -10,4 +10,5 @@ class UIText: public UIElement{
 
     void setText(const std::string& str);
     void draw(sf::RenderTarget& target) override;
+    void setSize(int size);
 };
