@@ -1,0 +1,3 @@
+/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles/Drift.dir
+/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles/edit_cache.dir
+/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles/rebuild_cache.dir
