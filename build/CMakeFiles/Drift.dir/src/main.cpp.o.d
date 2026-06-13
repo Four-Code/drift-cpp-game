@@ -202,31 +202,48 @@ CMakeFiles/Drift.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_conv.h /usr/include/SFML/System/Utf.inl \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/SFML/System/String.inl \
- /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/Button.hpp \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/GameStates/HomeState.hpp \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/GameStates/GameStateBase.hpp \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/Container.hpp \
  /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/UIElement.hpp \
- /usr/include/SFML/Graphics/ConvexShape.hpp \
+ /usr/include/SFML/Window/Event.hpp /usr/include/SFML/Window/Joystick.hpp \
+ /usr/include/SFML/Window/Keyboard.hpp /usr/include/SFML/Window/Mouse.hpp \
+ /usr/include/SFML/Window/Sensor.hpp /usr/include/SFML/System/Vector3.hpp \
+ /usr/include/SFML/System/Vector3.inl /usr/include/c++/13/memory \
+ /usr/include/c++/13/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/unique_ptr.h \
+ /usr/include/c++/13/bits/shared_ptr.h \
+ /usr/include/c++/13/bits/shared_ptr_base.h \
+ /usr/include/c++/13/bits/allocated_ptr.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/ext/concurrence.h \
+ /usr/include/c++/13/bits/shared_ptr_atomic.h \
+ /usr/include/c++/13/bits/atomic_base.h \
+ /usr/include/c++/13/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/13/backward/auto_ptr.h \
+ /usr/include/c++/13/pstl/glue_memory_defs.h /usr/include/c++/13/utility \
+ /usr/include/c++/13/bits/stl_relops.h \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/GameFonts.hpp \
  /usr/include/SFML/Graphics/Font.hpp /usr/include/SFML/Graphics/Glyph.hpp \
  /usr/include/SFML/Graphics/Texture.hpp /usr/include/c++/13/map \
  /usr/include/c++/13/bits/stl_tree.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/c++/13/bits/erase_if.h \
+ /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/optional \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/GameStates/PlayingState.hpp \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/StateManager.hpp \
+ /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/Button.hpp \
+ /usr/include/SFML/Graphics/ConvexShape.hpp \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
- /usr/include/SFML/Graphics/Text.hpp /usr/include/SFML/Window/Event.hpp \
- /usr/include/SFML/Window/Joystick.hpp \
- /usr/include/SFML/Window/Keyboard.hpp /usr/include/SFML/Window/Mouse.hpp \
- /usr/include/SFML/Window/Sensor.hpp /usr/include/SFML/System/Vector3.hpp \
- /usr/include/SFML/System/Vector3.inl /usr/include/c++/13/functional \
+ /usr/include/SFML/Graphics/Text.hpp /usr/include/c++/13/functional \
  /usr/include/c++/13/bits/std_function.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
- /usr/include/c++/13/bits/hashtable_policy.h \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/array /usr/include/c++/13/compare \
- /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/GameFonts.hpp \
+ /usr/include/c++/13/bits/hashtable_policy.h /usr/include/c++/13/array \
+ /usr/include/c++/13/compare \
  /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/Label.hpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Err.hpp \
@@ -249,18 +266,4 @@ CMakeFiles/Drift.dir/src/main.cpp.o: \
  /usr/include/SFML/Graphics/Shader.hpp \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
- /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /mnt/MyData2/Coding/Concepts/C++/Working/Drift/include/UI/Container.hpp \
- /usr/include/c++/13/memory \
- /usr/include/c++/13/bits/stl_raw_storage_iter.h \
- /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/unique_ptr.h \
- /usr/include/c++/13/bits/shared_ptr.h \
- /usr/include/c++/13/bits/shared_ptr_base.h \
- /usr/include/c++/13/bits/allocated_ptr.h \
- /usr/include/c++/13/ext/concurrence.h \
- /usr/include/c++/13/bits/shared_ptr_atomic.h \
- /usr/include/c++/13/bits/atomic_base.h \
- /usr/include/c++/13/bits/atomic_lockfree_defines.h \
- /usr/include/c++/13/backward/auto_ptr.h \
- /usr/include/c++/13/pstl/glue_memory_defs.h /usr/include/c++/13/utility \
- /usr/include/c++/13/bits/stl_relops.h
+ /usr/include/SFML/Graphics/VertexBuffer.hpp

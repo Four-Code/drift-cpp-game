@@ -63,7 +63,7 @@ void Button::updatePositions(){
     sf::FloatRect lableSize = label.getLocalBounds();
     label.setPosition(UIElement::getPosition()+ sf::Vector2f{(width-lableSize.width)/2, (height-lableSize.height)/2-lableSize.top});
 }
-void Button::handleEvent(sf::Event event){
+void Button::handleEvent(const sf::Event& event){
     sf::FloatRect buttonBounds(UIElement::getPosition(), {width, height});
     if(event.type == sf::Event::MouseMoved){
         if(buttonBounds.contains({static_cast<float>(event.mouseMove.x), static_cast<float>(event.mouseMove.y)})){

@@ -177,6 +177,30 @@ src/GameObjects/PhysicsObject.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.s
 .PHONY : src/GameObjects/PhysicsObject.cpp.s
 
+src/GameStates/HomeState.o: src/GameStates/HomeState.cpp.o
+.PHONY : src/GameStates/HomeState.o
+
+# target to build an object file
+src/GameStates/HomeState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o
+.PHONY : src/GameStates/HomeState.cpp.o
+
+src/GameStates/HomeState.i: src/GameStates/HomeState.cpp.i
+.PHONY : src/GameStates/HomeState.i
+
+# target to preprocess a source file
+src/GameStates/HomeState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.i
+.PHONY : src/GameStates/HomeState.cpp.i
+
+src/GameStates/HomeState.s: src/GameStates/HomeState.cpp.s
+.PHONY : src/GameStates/HomeState.s
+
+# target to generate assembly for a file
+src/GameStates/HomeState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.s
+.PHONY : src/GameStates/HomeState.cpp.s
+
 src/GameStates/PlayingState.o: src/GameStates/PlayingState.cpp.o
 .PHONY : src/GameStates/PlayingState.o
 
@@ -200,6 +224,30 @@ src/GameStates/PlayingState.s: src/GameStates/PlayingState.cpp.s
 src/GameStates/PlayingState.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.s
 .PHONY : src/GameStates/PlayingState.cpp.s
+
+src/StateManager.o: src/StateManager.cpp.o
+.PHONY : src/StateManager.o
+
+# target to build an object file
+src/StateManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/StateManager.cpp.o
+.PHONY : src/StateManager.cpp.o
+
+src/StateManager.i: src/StateManager.cpp.i
+.PHONY : src/StateManager.i
+
+# target to preprocess a source file
+src/StateManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/StateManager.cpp.i
+.PHONY : src/StateManager.cpp.i
+
+src/StateManager.s: src/StateManager.cpp.s
+.PHONY : src/StateManager.s
+
+# target to generate assembly for a file
+src/StateManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Drift.dir/build.make CMakeFiles/Drift.dir/src/StateManager.cpp.s
+.PHONY : src/StateManager.cpp.s
 
 src/UI/Button.o: src/UI/Button.cpp.o
 .PHONY : src/UI/Button.o
@@ -336,9 +384,15 @@ help:
 	@echo "... src/GameObjects/PhysicsObject.o"
 	@echo "... src/GameObjects/PhysicsObject.i"
 	@echo "... src/GameObjects/PhysicsObject.s"
+	@echo "... src/GameStates/HomeState.o"
+	@echo "... src/GameStates/HomeState.i"
+	@echo "... src/GameStates/HomeState.s"
 	@echo "... src/GameStates/PlayingState.o"
 	@echo "... src/GameStates/PlayingState.i"
 	@echo "... src/GameStates/PlayingState.s"
+	@echo "... src/StateManager.o"
+	@echo "... src/StateManager.i"
+	@echo "... src/StateManager.s"
 	@echo "... src/UI/Button.o"
 	@echo "... src/UI/Button.i"
 	@echo "... src/UI/Button.s"

@@ -27,7 +27,7 @@ class Button: public UIElement{
     void setPosition(sf::Vector2f newPosition)override;
     void setBorderRadius(float newBorderRadius);
     void updatePositions();
-    void handleEvent(sf::Event event);
+    void handleEvent(const sf::Event& event)override;
     void hover();
     void unhover();
     private:

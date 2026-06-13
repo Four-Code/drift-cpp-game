@@ -1,11 +1,9 @@
+#pragma once
 #include "GameStates/GameStateBase.hpp"
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <vector>
+#include "UI/GameFonts.hpp"
 
-class PlayingState:public GameStateBase{
+class HomeState:public GameStateBase{
     public:
     void init(GameFont& gameFonts)override;
     void show(sf::RenderTarget& target, float dt)override;
-    private:
-    
 };

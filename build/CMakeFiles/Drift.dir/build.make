@@ -97,10 +97,24 @@ CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/PhysicsObject.cpp -o CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.s
 
+CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o: CMakeFiles/Drift.dir/flags.make
+CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/HomeState.cpp
+CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o -MF CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o.d -o CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/HomeState.cpp
+
+CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/HomeState.cpp > CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.i
+
+CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/HomeState.cpp -o CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.s
+
 CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o: CMakeFiles/Drift.dir/flags.make
 CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/PlayingState.cpp
 CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o -MF CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o.d -o CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/PlayingState.cpp
 
 CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.i: cmake_force
@@ -111,10 +125,24 @@ CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/PlayingState.cpp -o CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.s
 
+CMakeFiles/Drift.dir/src/StateManager.cpp.o: CMakeFiles/Drift.dir/flags.make
+CMakeFiles/Drift.dir/src/StateManager.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/StateManager.cpp
+CMakeFiles/Drift.dir/src/StateManager.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Drift.dir/src/StateManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/StateManager.cpp.o -MF CMakeFiles/Drift.dir/src/StateManager.cpp.o.d -o CMakeFiles/Drift.dir/src/StateManager.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/StateManager.cpp
+
+CMakeFiles/Drift.dir/src/StateManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Drift.dir/src/StateManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/StateManager.cpp > CMakeFiles/Drift.dir/src/StateManager.cpp.i
+
+CMakeFiles/Drift.dir/src/StateManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Drift.dir/src/StateManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/StateManager.cpp -o CMakeFiles/Drift.dir/src/StateManager.cpp.s
+
 CMakeFiles/Drift.dir/src/UI/Button.cpp.o: CMakeFiles/Drift.dir/flags.make
 CMakeFiles/Drift.dir/src/UI/Button.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Button.cpp
 CMakeFiles/Drift.dir/src/UI/Button.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Drift.dir/src/UI/Button.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Drift.dir/src/UI/Button.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/UI/Button.cpp.o -MF CMakeFiles/Drift.dir/src/UI/Button.cpp.o.d -o CMakeFiles/Drift.dir/src/UI/Button.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Button.cpp
 
 CMakeFiles/Drift.dir/src/UI/Button.cpp.i: cmake_force
@@ -128,7 +156,7 @@ CMakeFiles/Drift.dir/src/UI/Button.cpp.s: cmake_force
 CMakeFiles/Drift.dir/src/UI/Container.cpp.o: CMakeFiles/Drift.dir/flags.make
 CMakeFiles/Drift.dir/src/UI/Container.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Container.cpp
 CMakeFiles/Drift.dir/src/UI/Container.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Drift.dir/src/UI/Container.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Drift.dir/src/UI/Container.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/UI/Container.cpp.o -MF CMakeFiles/Drift.dir/src/UI/Container.cpp.o.d -o CMakeFiles/Drift.dir/src/UI/Container.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Container.cpp
 
 CMakeFiles/Drift.dir/src/UI/Container.cpp.i: cmake_force
@@ -142,7 +170,7 @@ CMakeFiles/Drift.dir/src/UI/Container.cpp.s: cmake_force
 CMakeFiles/Drift.dir/src/UI/Label.cpp.o: CMakeFiles/Drift.dir/flags.make
 CMakeFiles/Drift.dir/src/UI/Label.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Label.cpp
 CMakeFiles/Drift.dir/src/UI/Label.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Drift.dir/src/UI/Label.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Drift.dir/src/UI/Label.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/UI/Label.cpp.o -MF CMakeFiles/Drift.dir/src/UI/Label.cpp.o.d -o CMakeFiles/Drift.dir/src/UI/Label.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Label.cpp
 
 CMakeFiles/Drift.dir/src/UI/Label.cpp.i: cmake_force
@@ -156,7 +184,7 @@ CMakeFiles/Drift.dir/src/UI/Label.cpp.s: cmake_force
 CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o: CMakeFiles/Drift.dir/flags.make
 CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/UIElement.cpp
 CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o -MF CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o.d -o CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/UIElement.cpp
 
 CMakeFiles/Drift.dir/src/UI/UIElement.cpp.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/Drift.dir/src/UI/UIElement.cpp.s: cmake_force
 CMakeFiles/Drift.dir/src/main.cpp.o: CMakeFiles/Drift.dir/flags.make
 CMakeFiles/Drift.dir/src/main.cpp.o: /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/main.cpp
 CMakeFiles/Drift.dir/src/main.cpp.o: CMakeFiles/Drift.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Drift.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Drift.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Drift.dir/src/main.cpp.o -MF CMakeFiles/Drift.dir/src/main.cpp.o.d -o CMakeFiles/Drift.dir/src/main.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/main.cpp
 
 CMakeFiles/Drift.dir/src/main.cpp.i: cmake_force
@@ -185,7 +213,9 @@ CMakeFiles/Drift.dir/src/main.cpp.s: cmake_force
 Drift_OBJECTS = \
 "CMakeFiles/Drift.dir/src/GameObjects/Balloon.cpp.o" \
 "CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.o" \
+"CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o" \
 "CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o" \
+"CMakeFiles/Drift.dir/src/StateManager.cpp.o" \
 "CMakeFiles/Drift.dir/src/UI/Button.cpp.o" \
 "CMakeFiles/Drift.dir/src/UI/Container.cpp.o" \
 "CMakeFiles/Drift.dir/src/UI/Label.cpp.o" \
@@ -197,7 +227,9 @@ Drift_EXTERNAL_OBJECTS =
 
 Drift: CMakeFiles/Drift.dir/src/GameObjects/Balloon.cpp.o
 Drift: CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.o
+Drift: CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o
 Drift: CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o
+Drift: CMakeFiles/Drift.dir/src/StateManager.cpp.o
 Drift: CMakeFiles/Drift.dir/src/UI/Button.cpp.o
 Drift: CMakeFiles/Drift.dir/src/UI/Container.cpp.o
 Drift: CMakeFiles/Drift.dir/src/UI/Label.cpp.o
@@ -208,7 +240,7 @@ Drift: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 Drift: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 Drift: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
 Drift: CMakeFiles/Drift.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Drift"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Drift"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Drift.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

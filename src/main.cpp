@@ -1,5 +1,8 @@
 #include "GameObjects/Balloon.hpp"
 #include "GameObjects/PhysicsObject.hpp"
+#include "GameStates/HomeState.hpp"
+#include "GameStates/PlayingState.hpp"
+#include "StateManager.hpp"
 #include "UI/Button.hpp"
 #include "UI/GameFonts.hpp"
 #include "UI/Label.hpp"
@@ -23,15 +26,14 @@ int main(){
 
     GameFont gameFonts;
     gameFonts.base.loadFromFile("resources/fonts/IosevkaCharonMono-BoldItalic.ttf");
-    Container mainScreen;
 
-    Label& title = mainScreen.addElement<Label>("Drift", gameFonts.base, 3);
-    Button& button = mainScreen.addElement<Button>("Start", gameFonts.base, 150, 40, [&]{
-        window.create(sf::VideoMode::getDesktopMode(), "Drift v2.0", sf::Style::Fullscreen);
-    });
-    button.setPosition({500, 300});
-    title.upDateFontSize(80);
-    title.setPosition({500, 100});
+    StateManager statemanager;
+
+    HomeState& homestate = statemanager.addState<HomeState>();
+    homestate.init(gameFonts);
+
+    PlayingState& playingstate = statemanager.addState<PlayingState>();
+    playingstate.init(gameFonts);
 
     Balloon balloon;
     balloon.radius = convertLengthToPixel(4);
@@ -44,7 +46,6 @@ int main(){
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            button.handleEvent(event);
             switch (event.type) {
                 case sf::Event::Closed:{
                     window.close();
@@ -59,7 +60,7 @@ int main(){
             leftovertime -= dt;
         }
         window.clear();
-        mainScreen.draw(window);
+        statemanager.show(window, dt, event);
         balloon.draw(window);
         window.display();
     }
