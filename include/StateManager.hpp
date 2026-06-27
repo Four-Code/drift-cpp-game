@@ -3,6 +3,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Window/Event.hpp>
 #include <memory>
+#include <optional>
 #include <utility>
 #include <vector>
 #include "GameStates/GameStateBase.hpp"
@@ -17,7 +18,8 @@ class StateManager{
         states.push_back(std::move(ptr));
         return ref;
     }
-    void show(sf::RenderTarget& target, float dt, const sf::Event& event);
+    void show(sf::RenderTarget& target, float dt);
+    void handleEvent(const std::optional<sf::Event>& event);
     GameState returnCurrentState();
     private:
     GameState currentState = GameState::Home;

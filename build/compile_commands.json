@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/GameObjects/Balloon.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/Balloon.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/Balloon.cpp",
+  "output": "CMakeFiles/Drift.dir/src/GameObjects/Balloon.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/GameObjects/Obstacles/Needle.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/Obstacles/Needle.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/Obstacles/Needle.cpp",
+  "output": "CMakeFiles/Drift.dir/src/GameObjects/Obstacles/Needle.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/PhysicsObject.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameObjects/PhysicsObject.cpp",
+  "output": "CMakeFiles/Drift.dir/src/GameObjects/PhysicsObject.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/HomeState.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/HomeState.cpp",
+  "output": "CMakeFiles/Drift.dir/src/GameStates/HomeState.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/PlayingState.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/GameStates/PlayingState.cpp",
+  "output": "CMakeFiles/Drift.dir/src/GameStates/PlayingState.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/StateManager.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/StateManager.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/StateManager.cpp",
+  "output": "CMakeFiles/Drift.dir/src/StateManager.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/UI/Button.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Button.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Button.cpp",
+  "output": "CMakeFiles/Drift.dir/src/UI/Button.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/UI/Container.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Container.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Container.cpp",
+  "output": "CMakeFiles/Drift.dir/src/UI/Container.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/UI/Label.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Label.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/Label.cpp",
+  "output": "CMakeFiles/Drift.dir/src/UI/Label.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/UIElement.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/UI/UIElement.cpp",
+  "output": "CMakeFiles/Drift.dir/src/UI/UIElement.cpp.o"
+},
+{
+  "directory": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/build",
+  "command": "/usr/bin/c++  -I/mnt/MyData2/Coding/Concepts/C++/Working/Drift/include -std=gnu++17 -o CMakeFiles/Drift.dir/src/main.cpp.o -c /mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/main.cpp",
+  "file": "/mnt/MyData2/Coding/Concepts/C++/Working/Drift/src/main.cpp",
+  "output": "CMakeFiles/Drift.dir/src/main.cpp.o"
+}
+]

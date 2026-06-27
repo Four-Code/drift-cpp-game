@@ -7,7 +7,7 @@
 class Balloon:public PhysicsObject{
     public:
     float radius = 50;
-    void draw(sf::RenderTarget& target);
+    void draw(sf::RenderTarget& target)override;
     Balloon();
     private:
     sf::CircleShape shape;

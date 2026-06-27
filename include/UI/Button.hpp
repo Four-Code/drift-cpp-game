@@ -11,6 +11,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <functional>
+#include <optional>
 #include <string>
 
 //position represents the top left corner, values are wrt to the parent not global screen coords.
@@ -27,7 +28,7 @@ class Button: public UIElement{
     void setPosition(sf::Vector2f newPosition)override;
     void setBorderRadius(float newBorderRadius);
     void updatePositions();
-    void handleEvent(const sf::Event& event)override;
+    void handleEvent(const std::optional<sf::Event>& event)override;
     void hover();
     void unhover();
     private:

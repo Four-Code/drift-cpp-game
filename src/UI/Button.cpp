@@ -5,9 +5,10 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
+#include <optional>
 
 Button::Button(std::string textP, sf::Font& fontP, float widthP, float heightP, std::function<void()> action)
-:textvalue(textP),font(fontP), width(widthP), height(heightP), onclick(action), label(textvalue, font)
+:textvalue(textP),font(fontP), width(widthP), height(heightP), onclick(action), label(fontP, textP)
 {
     topleft.setOrigin({borderRadius, borderRadius});
     topright.setOrigin({borderRadius, borderRadius});
@@ -61,31 +62,31 @@ void Button::updatePositions(){
     middle.setPosition(UIElement::getPosition() + sf::Vector2f{ 0,  0});
 
     sf::FloatRect lableSize = label.getLocalBounds();
-    label.setPosition(UIElement::getPosition()+ sf::Vector2f{(width-lableSize.width)/2, (height-lableSize.height)/2-lableSize.top});
+    label.setPosition(UIElement::getPosition()+ sf::Vector2f{(width-lableSize.size.x)/2, (height-lableSize.size.y)/2});
 }
-void Button::handleEvent(const sf::Event& event){
+void Button::handleEvent(const std::optional<sf::Event>& event){
     sf::FloatRect buttonBounds(UIElement::getPosition(), {width, height});
-    if(event.type == sf::Event::MouseMoved){
-        if(buttonBounds.contains({static_cast<float>(event.mouseMove.x), static_cast<float>(event.mouseMove.y)})){
+    if(const auto* mousemoveevent = event->getIf<sf::Event::MouseMoved>()){
+        if(buttonBounds.contains({static_cast<float>(mousemoveevent->position.x), static_cast<float>(mousemoveevent->position.y)})){
             Button::hover();
         }
         else{
             Button::unhover();
         }
     }
-    if (event.type == sf::Event::MouseButtonPressed){
-        if(buttonBounds.contains({static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y)})){
+    if (const auto* mousebuttonpressedevent = event->getIf<sf::Event::MouseButtonPressed>()){
+        if(buttonBounds.contains({static_cast<float>(mousebuttonpressedevent->position.x), static_cast<float>(mousebuttonpressedevent->position.y)})){
             Button::click();
         }
     }
 }
 void Button::hover(){
     float shadeConstant = 0.7;
-    topleft.setFillColor({static_cast<sf::Uint8>(btncolor.r*shadeConstant), static_cast<sf::Uint8>(btncolor.g*shadeConstant), static_cast<sf::Uint8>(btncolor.b*shadeConstant)});
-    topright.setFillColor({static_cast<sf::Uint8>(btncolor.r*shadeConstant), static_cast<sf::Uint8>(btncolor.g*shadeConstant), static_cast<sf::Uint8>(btncolor.b*shadeConstant)});
-    bottomleft.setFillColor({static_cast<sf::Uint8>(btncolor.r*shadeConstant), static_cast<sf::Uint8>(btncolor.g*shadeConstant), static_cast<sf::Uint8>(btncolor.b*shadeConstant)});
-    bottomright.setFillColor({static_cast<sf::Uint8>(btncolor.r*shadeConstant), static_cast<sf::Uint8>(btncolor.g*shadeConstant), static_cast<sf::Uint8>(btncolor.b*shadeConstant)});
-    middle.setFillColor({static_cast<sf::Uint8>(btncolor.r*shadeConstant), static_cast<sf::Uint8>(btncolor.g*shadeConstant), static_cast<sf::Uint8>(btncolor.b*shadeConstant)});
+    topleft.setFillColor({static_cast<uint8_t>((btncolor.r*shadeConstant)), (static_cast<uint8_t>(btncolor.g*shadeConstant)), static_cast<uint8_t>((btncolor.b*shadeConstant))});
+    topright.setFillColor({static_cast<uint8_t>(btncolor.r*shadeConstant), static_cast<uint8_t>(btncolor.g*shadeConstant), static_cast<uint8_t>(btncolor.b*shadeConstant)});
+    bottomleft.setFillColor({static_cast<uint8_t>(btncolor.r*shadeConstant), static_cast<uint8_t>(btncolor.g*shadeConstant), static_cast<uint8_t>(btncolor.b*shadeConstant)});
+    bottomright.setFillColor({static_cast<uint8_t>(btncolor.r*shadeConstant), static_cast<uint8_t>(btncolor.g*shadeConstant), static_cast<uint8_t>(btncolor.b*shadeConstant)});
+    middle.setFillColor({static_cast<uint8_t>(btncolor.r*shadeConstant), static_cast<uint8_t>(btncolor.g*shadeConstant), static_cast<uint8_t>(btncolor.b*shadeConstant)});
 }
 void Button::unhover(){
     topleft.setFillColor(btncolor);

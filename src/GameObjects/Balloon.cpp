@@ -5,11 +5,11 @@
 
 void Balloon::draw(sf::RenderTarget& target){
     shape.setPosition(convertToPixel(PhysicsObject::Position, target.getSize().y));
-    shape.setRadius(radius);
+    shape.setRadius(convertLengthToPixel(radius));
     target.draw(shape);
 }
 Balloon::Balloon()
-:shape(radius)
+:shape(convertLengthToPixel(radius))
 {
-    shape.setOrigin(radius, radius);
+    shape.setOrigin({(radius), (radius)});
 }

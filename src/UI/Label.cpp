@@ -5,7 +5,7 @@
 #include <SFML/System/Vector2.hpp>
 
 Label::Label(std::string textP, sf::Font& fontP, float fontSizeP)
-:textValue(textP), font(fontP), fontSize(fontSizeP), sfmltextobject(textP, fontP)
+:textValue(textP), font(fontP), fontSize(fontSizeP), sfmltextobject(fontP, textP)
 {}
 
 void Label::updateFont(sf::Font& fontp){

@@ -2,6 +2,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
+#include <optional>
 
 void UIElement::draw(sf::RenderTarget& target){
 
@@ -17,6 +18,6 @@ void UIElement::setParent(UIElement* parentP){
 UIElement* UIElement::getParent(){
     return parent;
 }
-void UIElement::handleEvent(const sf::Event& event){
+void UIElement::handleEvent(const std::optional<sf::Event>& event){
 
 }

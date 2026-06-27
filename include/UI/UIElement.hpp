@@ -3,6 +3,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
+#include <optional>
 class UIElement{
     public:
     virtual ~UIElement() = default;
@@ -15,7 +16,7 @@ class UIElement{
     virtual void setPosition(sf::Vector2f newPosition)=0;
     void setParent(UIElement* parentP);
     UIElement* getParent();
-    virtual void handleEvent(const sf::Event& event);
+    virtual void handleEvent(const std::optional<sf::Event>& event);
     private:
     UIElement* parent;
 };
